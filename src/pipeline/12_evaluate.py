@@ -41,9 +41,6 @@ def process_sequence(sequence):
     fpath = paths.prediction_folderpath % (parameters['batch_name'], sequence['name'])
     sys.stdout.flush()
     #gt_scene = pickle.load(open(fpath + 'ground_truth.pkl'))
-    print '*'*50    
-    print parameters['tests'][0]
-    print '*'*50
     gt_scene = scene.Scene(parameters['tests'][0]['mu'], None)
     gt_scene.load_sequence(sequence, frame_nos=0,
         segment_with_gt=False,
@@ -143,7 +140,7 @@ if __name__ == '__main__':
     # print "WARNING - SMALL TEST DATA"
     # test_data = yaml.load(open('/media/ssd/data/oisin_house/train_test/test.yaml'))
     results = mapper(process_sequence, paths.test_data)
-    yaml.dump(results, open('./nyu_cad/all_results.yaml', 'w'))
+    yaml.dump(results, open('../../data/all_results.yaml', 'w'))
 
     # printing the accumulated table
     scores = ['iou', 'precision', 'recall']
@@ -214,8 +211,8 @@ if __name__ == '__main__':
 
 
 
-    print "evaluate_inside_room_only is", parameters['evaluate_inside_room_only']
-    print sizes
+    #print "evaluate_inside_room_only is", parameters['evaluate_inside_room_only']
+    #print sizes
 
             # results_dict[desc] = {
             #             'description': desc,

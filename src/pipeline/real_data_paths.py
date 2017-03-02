@@ -86,13 +86,13 @@ evaluation_data_path = models_folder + 'model_evaluation_voxlets/'
 # voxlet_prediction_img_path = data_folder + '/predictions/%s/%s/%s.png'
 voxlet_prediction_img_path = '../../data/predictions/%s/%s/%s.png'
 #
-evaluation_region_path = data_folder + '%s/evaluation_regions/%s_eval_region.mat'
+evaluation_region_path =  '../../data/evaluation_regions/%s/%s_eval_region.mat'
 #
 # # first %s is the test batch category name, second is the sequence name
 # prediction_folderpath = data_folder + '/predictions/%s/%s/pickles/'
 prediction_folderpath = '../../data/predictions/%s/%s/pickles/'
 #
-scores_path = data_folder + 'predictions/%s/%s/scores.yaml'
+scores_path = '../../data/predictions/%s/%s/scores.yaml'
 #
 # # final %s is the actual test being done
 # prediction_path = data_folder + '/predictions/%s/%s/%s.pkl'
