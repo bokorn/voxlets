@@ -81,7 +81,7 @@ def process_sequence(sequence, voxlet_params):
         post_transform=flatten_sbox)
         for idx in idxs]
 
-    return np.array(gt_shoeboxes)
+    return np.array(gt_shoeboxes).astype(np.float16)
 
 
 def extract_all_voxlets(voxlet_params_in):
@@ -93,14 +93,14 @@ def extract_all_voxlets(voxlet_params_in):
     if system_setup.multicore:
         import multiprocessing
         pool = multiprocessing.Pool(system_setup.cores)
-        voxlet_list = pool.map(func, train_data_to_use)
+        np_voxlets = np.vstack(pool.map(func, train_data_to_use))
         pool.close()
         pool.join()
     else:
-        voxlet_list = map(func, train_data_to_use)
+        np_voxlets = np.vstack(map(func, train_data_to_use))
 
-    print "Total scenes processed: ", len(voxlet_list)
-    np_voxlets = np.vstack(voxlet_list).astype(np.float16)
+#    print "Total scenes processed: ", len(voxlet_list)
+#    np_voxlets = np.vstack(voxlet_list).astype(np.float16)
 
     print "-> Shoeboxes are shape " + str(np_voxlets.shape)
     return np_voxlets

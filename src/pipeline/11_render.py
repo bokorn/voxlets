@@ -50,11 +50,14 @@ def process_sequence(sequence):
     print "-> Loading ground truth", sequence['name']
 
     fpath = paths.prediction_folderpath % (parameters['batch_name'], sequence['name'])
-    if not os.path.exists(fpath + 'ground_truth.pkl'):
-        print "Cannot find", fpath
-        return
+#    if not os.path.exists(fpath + 'ground_truth.pkl'):
+#        print "Cannot find", fpath
+#        return
     # gt_scene = pickle.load(open(fpath + 'ground_truth.pkl'))
-
+    gt_scene = scene.Scene(parameters['mu'], None)
+    gt_scene.load_sequence(sequence, frame_nos=0,
+        segment_with_gt=parameters['segment_with_gt'],
+        segment=parameters['segment_scene'])
     # Path where any renders will be saved to
     gen_renderpath = paths.voxlet_prediction_img_path % \
         (parameters['batch_name'], sequence['name'], '%s')

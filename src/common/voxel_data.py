@@ -578,7 +578,7 @@ class WorldVoxels(Voxels):
 
         # put in a ground plane...
         if ground_height:
-            height_voxels = float(ground_height) / float(temp.vox_size)
+            height_voxels = int(float(ground_height) / float(temp.vox_size))
             temp.V[:, :, :height_voxels] = -10
             temp_slice = temp.V[:, :, height_voxels]
             temp_slice[np.isnan(temp_slice)] = 10

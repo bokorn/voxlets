@@ -797,7 +797,7 @@ class Reconstructer(object):
         plt.axis('off')
 
         plt.subplot(132)
-        top_view = np.nanmean(self.sc.gt_tsdf.V, axis=2)
+        top_view = np.nanmean(self.sc.gt_tsdf.V, axis=2).astype(np.float32)
         # np.nanmean(self.sc.im_tsdf.V, axis=2)
         plt.imshow(top_view, cmap=plt.get_cmap('Greys'))
         plt.axis('off')

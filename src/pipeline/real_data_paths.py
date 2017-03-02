@@ -4,7 +4,8 @@ import system_setup
 from copy import deepcopy
 
 # data_folder = '/media/michael/Seagate/phd_projects/volume_completion_data/data/oisin_house/'
-data_folder = '/home/michael/Dropbox/Public/for_release/'
+#data_folder = '/home/michael/Dropbox/Public/for_release/'
+data_folder = '/home/bokorn/src/voxlets/voxlets/for_release/'
 
 raw_data = data_folder + 'fold_2/'
 
@@ -40,14 +41,14 @@ if system_setup.small_sample:
 for item in all_train_data:
     item['folder'] = data_folder + item['folder'].split('/')[-2] + '/'
     item['folder'] = item['folder'].replace('data2', 'fold_2')
-    item['folder'] = item['folder'].replace('data', 'fold_0')
     item['folder'] = item['folder'].replace('data1', 'fold_1')
+    item['folder'] = item['folder'].replace('data', 'fold_0')
 
 for item in test_data:
     item['folder'] = data_folder + item['folder'].split('/')[-2] + '/'
     item['folder'] = item['folder'].replace('data2', 'fold_2')
-    item['folder'] = item['folder'].replace('data', 'fold_0')
     item['folder'] = item['folder'].replace('data1', 'fold_1')
+    item['folder'] = item['folder'].replace('data', 'fold_0')
 
 sequences = []
 for t in scenes:
@@ -85,13 +86,13 @@ evaluation_data_path = models_folder + 'model_evaluation_voxlets/'
 # voxlet_prediction_img_path = data_folder + '/predictions/%s/%s/%s.png'
 voxlet_prediction_img_path = '../../data/predictions/%s/%s/%s.png'
 #
-# evaluation_region_path = data_folder + '/predictions/%s/%s/evaluation_region.mat'
+evaluation_region_path = data_folder + '%s/evaluation_regions/%s_eval_region.mat'
 #
 # # first %s is the test batch category name, second is the sequence name
 # prediction_folderpath = data_folder + '/predictions/%s/%s/pickles/'
 prediction_folderpath = '../../data/predictions/%s/%s/pickles/'
 #
-scores_path = data_folder + '/predictions/%s/%s/scores.yaml'
+scores_path = data_folder + 'predictions/%s/%s/scores.yaml'
 #
 # # final %s is the actual test being done
 # prediction_path = data_folder + '/predictions/%s/%s/%s.pkl'

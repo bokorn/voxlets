@@ -40,7 +40,14 @@ def process_sequence(sequence):
     print "-> Loading ground truth", sequence['name']
     fpath = paths.prediction_folderpath % (parameters['batch_name'], sequence['name'])
     sys.stdout.flush()
-    gt_scene = pickle.load(open(fpath + 'ground_truth.pkl'))
+    #gt_scene = pickle.load(open(fpath + 'ground_truth.pkl'))
+    print '*'*50    
+    print parameters['tests'][0]
+    print '*'*50
+    gt_scene = scene.Scene(parameters['tests'][0]['mu'], None)
+    gt_scene.load_sequence(sequence, frame_nos=0,
+        segment_with_gt=False,
+        segment=False)
     results_dict = collections.OrderedDict()
 
     evaluation_region_loadpath = paths.evaluation_region_path % (
